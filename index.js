@@ -114,6 +114,9 @@ SRIHashAssets.prototype.readFile = function readFile(dirname, file) {
   var assetSource;
 
   try {
+    if (this.options.rootURL) {
+      file = file.replace(this.options.rootURL,'');
+    }
     assetSource = fs.readFileSync(dirname + '/' + file, 'utf8');
   } catch(e) {
     return null;
