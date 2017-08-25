@@ -168,7 +168,7 @@ SRIHashAssets.prototype.generateIntegrity = function generateIntegrity(output, f
 
   append = ' integrity="' + integrity + '"';
 
-  if (external && this.options.crossorigin) {
+  if ((external || ('forcecrossorigin' in this.options)) && this.options.crossorigin) {
     if (!CROSS_ORIGIN_CHECK.test(output)) {
       append = append + ' crossorigin="' + this.options.crossorigin + '" ';
     }
